@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ex1;
+
+option go_package = "grpc/proto";
+
+message getCourseRequest {
+    int64 clientId = 1;
+}
+
+message courseMessage {
+  string serverName = 1;
+  string courseName = 2;
+}
+
+message getStudentRequest {}
+
+message getTeacherRequest {}
+
+service student {}
+
+service course {
+    rpc AskForCourse(getCourseRequest) returns (courseMessage);
+}
+
+service teacher {}
